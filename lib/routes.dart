@@ -1,3 +1,4 @@
 class Routes {
   static const REGISTER_PAGE = '/register-page';
+  static const HOME_PAGE = '/home-page';
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../routes.dart';
 class AuthPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -16,9 +16,16 @@ class AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Theme.of(context).backgroundColor,
       child: Stack(
       children: <Widget>[
-                Form(
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('assets/logo/256x256.jpg'),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 30.0,),
+                      child: Form(
                         key: _formKey,
                         child: Column(
                           children: <Widget>[
@@ -60,33 +67,33 @@ class AuthPageState extends State<AuthPage> {
                             //              errMsg,
                             //             style: TextStyle(
                             //                 color: Colors.red,
-                            //                 fontFamily: "Oswald"),
+                            //                 fontFamily: "Nunito"),
                             //                 textAlign: TextAlign.center,
                             //           )
                             //         : SizedBox()),
                             Container(
-                                width: MediaQuery.of(context).size.width,
+                                width: MediaQuery.of(context).size.width/4,
                                 margin: EdgeInsets.only(
                                   top: 40.0,
                                 ),
-                                child: MaterialButton(
+                                child: FlatButton(
+                                  color: Theme.of(context).buttonColor,
                                   child: Text(
                                     "Login",
-                                    style: TextStyle(fontFamily: "Oswald"),
+                                    style: TextStyle(fontFamily: "Nunito Bold",),
                                   ),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(3.0)),
                                   onPressed: () {
+                                     Navigator.of(context).pushNamed(Routes.HOME_PAGE);
                                     // // Navigator.of(context).pushNamedAndRemoveUntil(Routes.ADMIN_HOME, (Route route) => route == null);
                                     //  Firestore.instance.collection(Routes.USERS_COLLECTION).document('136428').get().then((onValue){
                                     //    print(onValue.data);
                                     //    Navigator.of(context).pushNamedAndRemoveUntil(Routes.USER_HOME, (Route route) => route == null, arguments: {'user' : onValue.data});
                                     // });
-                                    if (_formKey.currentState.validate()) {
-                                       _formKey.currentState.save();
-                                       print('validated');
-                                       print(_formKey.currentState);
-                                    } else print('VAlidation Issue');
+                                    // if (_formKey.currentState.validate()) {
+                                    //    _formKey.currentState.save();
+                                    // } else print('VAlidation Issue');
                                   //   setState(() {
                                   //         isLoading = true;
                                   //       });
@@ -120,12 +127,8 @@ class AuthPageState extends State<AuthPage> {
                                   //   });
                                   },
                                 )),
-                            Container(
-                                width: MediaQuery.of(context).size.width,
-                                margin: EdgeInsets.only(
-                                  top: 10.0,
-                                ),
-                                child: FlatButton(
+                            SizedBox(height: 25.0,),
+                            FlatButton(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(
                                           MediaQuery.of(context).size.height)),
@@ -133,16 +136,32 @@ class AuthPageState extends State<AuthPage> {
                                        //  Navigator.of(context).pushNamed(Routes.REGISTER_PAGE);
                                   },
                                   child: Text(
-                                    "Register your Organization ?",
+                                    "Create an Account?",
+                                    style: TextStyle(fontSize: 26.0, decoration: TextDecoration.underline),
                                   ),
-                                ))
+                                )
                           ],
                         ),
                       ),
-                isLoading ? Center(child: CircularProgressIndicator(backgroundColor: Colors.white,),) : Container()
+                    ),
+                    ],
+                ),
+                isLoading ? Container(
+                  color: Colors.black45,
+                  child: Center(child: CircularProgressIndicator(backgroundColor: Colors.transparent,),),) : Container()
       ],
     ),
     );
   }
   
 }
+
+
+/*
+ * State is being set on click of login button, provided form is validated. Then call to database should be happened with the state variables, and set isLoading to true.
+ * showAuthMessage for the error from database
+ * 
+ * 
+ * 
+ * Stack of a column and the loader, column of Image and form, form inturn containing a column of 2 form fields and 2 buttons
+*/

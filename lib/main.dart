@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AuthPage/AuthPage.dart';
+import 'package:flutter_app/HomePage/HomePage.dart';
+import 'package:flutter_app/routes.dart';
 // import 'package:flutter_app/AuthPage/AuthPage.dart';
 
 void main() => runApp(MyApp());
@@ -18,8 +20,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white,
         bottomAppBarColor: Colors.black,
+        buttonColor: Colors.blue,
         buttonTheme: ButtonThemeData(
-           buttonColor: Colors.lightBlue,
+           buttonColor: Colors.blue,
            disabledColor: Colors.grey,
            layoutBehavior: ButtonBarLayoutBehavior.constrained,
            textTheme: ButtonTextTheme.primary,
@@ -46,14 +49,15 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
-      // onGenerateRoute: (settings) {
-      //   final Map<String, dynamic> arguments = settings.arguments;
-      //   switch (settings.name) {
-        
-      //     default:
-      //       return MaterialPageRoute(builder: (context) => )
-      //   }
-
+      onGenerateRoute: (settings) {
+        final Map<String, dynamic> arguments = settings.arguments;
+        switch (settings.name) {
+          case Routes.HOME_PAGE:
+              return MaterialPageRoute(builder: (context) => HomePage());
+          default:
+            return MaterialPageRoute(builder: (context) => AuthPage());
+        }
+      }
     );
   }
 }
