@@ -80,7 +80,7 @@ class AuthPageState extends State<AuthPage> {
                                   color: Theme.of(context).buttonColor,
                                   child: Text(
                                     "Login",
-                                    style: TextStyle(fontFamily: "Nunito Bold",),
+                                    style: Theme.of(context).textTheme.button,
                                   ),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(3.0)),

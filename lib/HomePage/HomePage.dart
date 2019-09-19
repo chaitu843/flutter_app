@@ -16,6 +16,7 @@ class HomePageState extends State<HomePage> {
     switch (value) {
       case 'My Account':
         Navigator.of(context).pop();
+        Navigator.of(context).pushNamed(Routes.ACCOUNT_PAGE);
         break;
       default:
         Navigator.of(context).pop();
@@ -88,8 +89,8 @@ class HomePageState extends State<HomePage> {
                // Will redirect to ADD/SUB page with option set as a daily
               },
               child: Column(children: <Widget>[
-              Text('3', style: TextStyle(color: Colors.white, fontFamily: 'Nunito', fontSize: 24.0),), 
-              Text('units', style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontFamily: 'Nunito', fontSize: 16.0, fontWeight: FontWeight.bold))],),
+              Text('3', style: Theme.of(context).textTheme.display1), 
+              Text('units', style: Theme.of(context).textTheme.display2)],),
             ),
             ),
           Text('Long Tap to Update')
