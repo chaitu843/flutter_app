@@ -137,7 +137,7 @@ class AuthPageState extends State<AuthPage> {
                                   },
                                   child: Text(
                                     "Create an Account?",
-                                    style: TextStyle(fontSize: 26.0, decoration: TextDecoration.underline),
+                                    style: TextStyle(fontSize: 14.0, decoration: TextDecoration.underline),
                                   ),
                                 )
                           ],

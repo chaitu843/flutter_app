@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/AuthPage/AuthPage.dart';
 import 'package:flutter_app/HomePage/HomePage.dart';
+import 'package:flutter_app/MyAccountPage/MyAccountPage.dart';
 import 'package:flutter_app/routes.dart';
 // import 'package:flutter_app/AuthPage/AuthPage.dart';
 
@@ -37,18 +38,18 @@ class MyApp extends StatelessWidget {
             decoration: TextDecoration.none,
             fontSize: 20.0,
             fontWeight: FontWeight.normal,
-            fontFamily: 'arial',
+            fontFamily: 'Nunito',
           ),
           button: TextStyle(
             color: Colors.white,
             fontSize: 12.0,
-            fontFamily: 'arial'
+            fontFamily: 'Nunito'
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(focusColor: Colors.lightBlue,contentPadding: EdgeInsets.all(10.0)),
       ),
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: MyAccountPage(),
       onGenerateRoute: (settings) {
         final Map<String, dynamic> arguments = settings.arguments;
         switch (settings.name) {
