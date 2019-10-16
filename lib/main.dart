@@ -74,7 +74,7 @@ class MyApp extends StatelessWidget {
               contentPadding: EdgeInsets.all(10.0)),
         ),
         debugShowCheckedModeBanner: false,
-        home: AuthPage(),
+        home: HomePage(),
         onGenerateRoute: (settings) {
           final Map<String, dynamic> arguments = settings.arguments;
           switch (settings.name) {
