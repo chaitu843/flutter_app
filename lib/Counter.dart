@@ -20,18 +20,18 @@ class CounterState extends State<Counter> with SingleTickerProviderStateMixin {
     animationController =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
     animation = Tween(
-      begin: 0.0,
-      end: 1.0,
+      begin: 30.0,
+      end: 0.0,
     ).animate(CurvedAnimation(
-        parent: animationController, curve: Curves.fastOutSlowIn));
-    animation.addListener(() => this.setState((){}));
-    animationController.forward();
+        parent: animationController, curve: Curves.linear));
+    animation.addListener(() => this.setState(() {}));
+    animationController.repeat(period: Duration(seconds: 1));
     Timer.periodic(
         Duration(
           seconds: 1,
         ), (Timer time) {
-      if (second == 0) {
-        setState(() {
+      setState(() {
+        if (second == 0) {
           second = 59;
           if (minute != 0)
             minute = minute - 1;
@@ -42,12 +42,10 @@ class CounterState extends State<Counter> with SingleTickerProviderStateMixin {
             else
               hour = 23;
           }
-        });
-      } else {
-        setState(() {
-          second--;
-        });
-      }
+        } else {
+          second = second - 1;
+        }
+      });
     });
     DateTime bTime;
     bTime = DateTime(time.year, time.month, time.day, 8, 0);
@@ -72,30 +70,31 @@ class CounterState extends State<Counter> with SingleTickerProviderStateMixin {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // Container(
-        //   margin: EdgeInsets.only(right: 10.0),
-        //   child: hour < 10 ? Text('0$hour', style: TextStyle(color: Colors.white),) : Text('$hour', style: TextStyle(color: Colors.white),),
-        //   padding: EdgeInsets.all(10.0),
-        //   decoration: BoxDecoration(
-        //     color: Colors.red
-        //   ),
-        // ),
-        // Text(':'),
-        // Container(
-        //   margin: EdgeInsets.only(right: 10.0, left:10.0),
-        //   child: minute < 10 ? Text('0$minute', style: TextStyle(color: Colors.white),) : Text('$minute', style: TextStyle(color: Colors.white),),
-        //   padding: EdgeInsets.all(10.0),
-        //   decoration: BoxDecoration(
-        //     color: Colors.red
-        //   ),
-        // ),
-        // Text(':'),
+        Container(
+          margin: EdgeInsets.only(right: 10.0),
+          child: hour < 10 ? Text('0$hour', style: TextStyle(color: Colors.white),) : Text('$hour', style: TextStyle(color: Colors.white),),
+          padding: EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: Colors.red
+          ),
+        ),
+        Text(':'),
+        Container(
+          margin: EdgeInsets.only(right: 10.0, left:10.0),
+          child: minute < 10 ? Text('0$minute', style: TextStyle(color: Colors.white),) : Text('$minute', style: TextStyle(color: Colors.white),),
+          padding: EdgeInsets.all(10.0),
+          decoration: BoxDecoration(
+            color: Colors.red
+          ),
+        ),
+        Text(':'),
         AnimatedBuilder(
           animation: animationController,
           builder: (BuildContext context, Widget child) {
             return Container(
               margin: EdgeInsets.only(left: 10.0),
-              height: animation.value * 45.0,
+              height: 45.0,
+              width: 40.0,
               child: second < 10
                   ? Text(
                       '0$second',
@@ -105,25 +104,11 @@ class CounterState extends State<Counter> with SingleTickerProviderStateMixin {
                       '$second',
                       style: TextStyle(color: Colors.white),
                     ),
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(left: 8.0, top: animation.value),
               decoration: BoxDecoration(color: Colors.red),
             );
           },
         ),
-        Container(
-          margin: EdgeInsets.only(left: 10.0),
-          child: second < 10
-              ? Text(
-                  '0$second',
-                  style: TextStyle(color: Colors.white),
-                )
-              : Text(
-                  '$second',
-                  style: TextStyle(color: Colors.white),
-                ),
-          padding: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(color: Colors.red),
-        )
       ],
     );
   }

@@ -28,7 +28,8 @@ class HomePageState extends State<HomePage> {
               return AlertDialog(
                 content: Text('Are you sure you want to Sign Out?'),
                 backgroundColor: Colors.white,
-                contentPadding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                contentPadding:
+                    EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
                 actions: <Widget>[
                   FlatButton(
                     child: Text('SIGN OUT'),
@@ -128,6 +129,14 @@ class HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('You can expect your delivery in'),
+            SizedBox(
+              height: 30.0,
+            ),
+            Counter(),
+            SizedBox(
+              height: 80.0,
+            ),
             Container(
               margin: EdgeInsets.only(bottom: 30.0),
               padding: EdgeInsets.all(30.0),
@@ -148,8 +157,6 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Text('Long Tap to Update'),
-            SizedBox(height: 80.0,),
-            Counter()
           ],
         ),
       ),
