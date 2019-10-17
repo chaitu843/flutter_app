@@ -69,9 +69,9 @@ class MyApp extends StatelessWidget {
             ),
             button: TextStyle(color: Colors.white, fontFamily: 'Nunito Bold'),
           ),
-          inputDecorationTheme: InputDecorationTheme(
-              focusColor: Colors.lightBlue,
-              contentPadding: EdgeInsets.all(10.0)),
+          // inputDecorationTheme: InputDecorationTheme(
+          //     focusColor: Colors.lightBlue,
+          //     contentPadding: EdgeInsets.all(10.0)),
         ),
         debugShowCheckedModeBanner: false,
         home: HomePage(),
