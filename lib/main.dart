@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         title: 'Dodhi',
         theme: getThemeData(),
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: AddSub(true),
         onGenerateRoute: (settings) {
           final Map<String, dynamic> arguments = settings.arguments;
           switch (settings.name) {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             case Routes.ACCOUNT_PAGE:
               return MaterialPageRoute(builder: (context) => MyAccountPage());
             case Routes.ADD_SUB_PAGE:
-              return MaterialPageRoute(builder: (context) => AddSub());
+              return MaterialPageRoute(builder: (context) => AddSub(false));
             default:
               return MaterialPageRoute(builder: (context) => AuthPage());
           }
